@@ -72,9 +72,6 @@
         last_name : {
             required: true,
         },
-        company : {
-            required: true
-        },
         email : {
             required: true,
             email : true
