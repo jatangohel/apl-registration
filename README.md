@@ -6,3 +6,4 @@ APL Registration is a a simple and dynamic user interface form developed with HT
 * Please check out the [Wiki] (https://github.com/jatangohel/apl-registration/wiki) for frequently asked questions
 
 * Go to http://www.webmountstudio.com for the company details.
+* Live Preview: http://www.webmountstudio.com/apl-registration
