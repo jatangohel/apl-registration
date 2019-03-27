@@ -247,6 +247,11 @@ body {
     width: 50%;
     padding: 0 30px; }
 
+
+.form-row .form-group-50 {
+    width: 25%;
+    padding: 0 30px; }
+
 .form-input, .form-select, .form-radio {
   margin-bottom: 23px; }
 
@@ -670,6 +675,14 @@ input.error {
     margin: 0px; }
 
   .form-row .form-group {
+    width: 100%;
+    padding: 0 0px; } }
+@media screen and (max-width: 480px) {
+  .submit {
+    width: 100%; }
+    
+    
+      .form-row .form-group-50 {
     width: 100%;
     padding: 0 0px; } }
 @media screen and (max-width: 480px) {

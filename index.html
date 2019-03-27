@@ -12,8 +12,13 @@
 
  <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
+    
+ 
 </head>
+       
+    
 <body>
+
 
     <div class="main">
 
@@ -29,6 +34,10 @@
                 </div>
                 <div class="signup-form">
                      <h1 style="color: #095142">&nbsp;&nbsp;&nbsp;&nbsp;<i>#APL2019</i></h1>
+                    <div class="form-input">
+                    <label style="margin: 15px 15px 15px 15px;"><u>Please note:</u></label>
+                    <label style="margin: 15px 15px 15px 15px;">Kindly fill up the form with honesty because we would only process authentic data.</label>
+                        </div>
                     <form method="POST" class="register-form" id="register-form">
                         <div class="form-row">
                              
@@ -43,12 +52,7 @@
                                     <label for="last_name" class="required">Last name</label>
                                     <input type="text" name="last_name" id="last_name" />
                                 </div>
-<!--
-                                <div class="form-input">
-                                    <label for="company" class="required">Company</label>
-                                    <input type="text" name="company" id="company" />
-                                </div>
--->
+
                                 <div class="form-input">
                                     <label for="email" class="required">Email</label>
                                     <input type="text" name="email" id="email" />
@@ -89,7 +93,7 @@
                                 <input class="field" id="country" disabled="true"/><br>
                                     
                                     <!-- end -->
-</div>
+                                </div>
                             </div>
                         </div>
                         
@@ -122,44 +126,106 @@
                             <div class="form-group">
                             
                                 <div class="form-input">
-                                    <label for="chequeno" class="required">Your Jersey Number ( 0 to 99)</label>
+                                    <label for="chequeno" class="required">Jersey Number (0 to 99)</label>
                                     <input type="number" name="chequeno" id="chequeno" min="0" max="99" />
-                                </div>
+                                </div> 
+                            </div>
+                            
+                            
+
+                            <div class="form-group">
+                                 <div class="form-input">
                                 
-                                 <div class="form-radio">
+                                    <div class="form-select">
                                     <div class="label-flex">
-                                        <label for="payment" class="required">Payment Mode</label>
-                                        <a href="#" class="form-link">Payment Detail</a>
+                                        <label for="jerseySize" class="required">Your Jersey Size</label>
+                                        <a href="#" class="form-link" style="color: red">Won't change</a>
+                                    </div>
+                                    <div class="select-list">
+                                        <select name="jerseySize" id="jerseySize">
+                                            <option value="selectSize">Select Final Size</option>
+                                            <option value="small" id="small">Small</option>
+                                            <option value="medium" id="medium">Medium</option>
+                                            <option value="large" id="large">Large</option>
+                                            <option value="xlarge" id="xlarge">XLarge</option>
+                                            <option value="2xlarge" id="2xlarge">2XLarge</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                              </div>
+                            
+                        
+                        
+                            <div class="form-group">     
+                                  <div class="form-radio">
+                                    <div class="label-flex">
+                                        <label for="payment" class="required">Interac to</label>
+                                        <a href="#" class="form-link">Select & copy email</a>
                                     </div>
                                     <div class="form-radio-group">            
                                         <div class="form-radio-item">
-                                            <input type="radio" name="payment" id="cash" checked>
-                                            <label for="cash">Cash</label>
+<!--                                            <input type="radio" name="hello" value="ankitvasu" id="myInput" onclick="myFunction()">Jatan-->
+                                            <input type="radio" name="payment" id="cash" value="vasu.ankit4@gmail.com" onclick="myFunction()">
+                                            <label for="cash">Ankit Vasu</label>
                                             <span class="check"></span>
                                         </div>
+<!--
                                         <div class="form-radio-item">
                                             <input type="radio" name="payment" id="cheque">
-                                            <label for="cheque">Interac</label>
+                                            <label for="cheque">Sachin Patel</label>
                                             <span class="check"></span>
                                         </div>
+-->
                                        
                                     </div>
                                 </div>
-                                
-                            </div>
-                            </div>
+                                 
+                                 <script>
+                                    function myFunction() {
+                                      
+                                        
+                                      var copyText = document.getElementById("cash");
+                                      copyText.select();
+                                      document.execCommand("copy");
+                                      alert("Copied the email for Interac: " + copyText.value);
+                                    }
+                                        
+                                    </script>     
+                        </div>
+                       
+                            
+                         
                         
                         
+                        
+                     
+                              <div class="form-group">
+                                  
+                                  <form action="upload.php" method="post" enctype="multipart/form-data">
+                                Select your profile picture:
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+<!--                                <input type="submit" value="Upload Image" name="submit">-->
+                            </form>
+                             
+                       
+                        <br>
+                     
                         <div class="form-submit">
                             <input type="submit" value="Submit" class="submit" id="submit" name="submit" />
                             <input type="submit" value="Reset" class="submit" id="reset" name="reset" />
                         </div>
-                        
+                                  </div>
+                    </form>
+                       
                 </div>
             </div></div>
-        
+    </div>
+           
 
     <!-- JS -->
+
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/nouislider/nouislider.min.js"></script>
     <script src="vendor/wnumb/wNumb.js"></script>
@@ -167,6 +233,9 @@
     <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="js/main.js"></script>
     
+            
+             
+            
         <!-- Phone Number -->
     <script>
  $(function () {
@@ -263,6 +332,9 @@ function geolocate() {
   }
 }
     </script>
+            
+             
+            
     <!-- Google Address ends -->
         
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF87lwnuKE1D2GbIEV2n7NRe4BUyxU8WE&libraries=places&callback=initAutocomplete"
