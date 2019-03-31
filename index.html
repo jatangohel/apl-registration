@@ -80,11 +80,12 @@
                 <center>
                     <img class="img-responsive" style="margin: 15px 15px" src="images/apl_logo.png" class="img"
                          width="10%">
-
-                    <h1 style="color: #f45a00"><i>WELCOME TO #APL2019</i></h1>
+                    <h1 style="color: #f45a00"><i>WELCOME TO &nbsp; <U style="color:#D04D01;">#APL2019</U> &nbsp;  REGISTRATIONS!</i></h1>
+                    <h3>(Hindu Gujarati Cricket Tournament)</h3>
                 </center>
 
 
+<!--
                 <div class="form-group">
                     <div class="form-input" style="padding: 9px 10px 9px 10px">
                         <label class="form-link" style="text-align: justify;"><u style="color: red;">Please note:</u>
@@ -95,6 +96,7 @@
                             understanding.</label>
                     </div>
                 </div>
+-->
 
 
                 <form method="POST" class="register-form" id="register-form">
@@ -162,7 +164,15 @@
                     <a class="form-link" style="color: red; text-align: justify;">THE RATINGS PROVIDED BY YOU ARE
                         CONSIDERED TO BE THE EXACT LEVEL AT WHICH YOU CONSIDER YOUR GAMEPLAY. CAPTAINS DURING THE
                         AUCTION WILL BID FOR YOU BASED ON THE RATINGS YOU PROVIDE. SO PLEASE MAKE SURE THE RATINGS ARE
-                        DONE SERIOUSLY IN ORDER TO ENJOY THE TOURNAMENT. THANK YOU FOR YOUR UNDERSTANDING</a>
+                        DONE SERIOUSLY IN ORDER TO ENJOY THE TOURNAMENT. THANK YOU FOR YOUR UNDERSTANDING.</a>
+                    
+                    <br><br>
+                    
+                    <label class="form-link" style="color: red; text-align: justify;">Ratings 0 to 3 -> Beginner</label>
+                    <label class="form-link" style="color: red; text-align: justify;">Ratings 4 to 5 -> Intermediate</label>
+                    <label class="form-link" style="color: red; text-align: justify;">Ratings 6 to 8 -> Advanced</label>
+                    <label class="form-link" style="color: red; text-align: justify;">Ratings 9 to 10 -> Expert</label>
+                    
 
                     <div class="batting">
                         <label class="required">Tell us about your batting skills</label>
@@ -172,7 +182,7 @@
                         </div>
                         <br>
                         <input type="text" class="required" name="battingComments" id="battingComments" maxlength="150"
-                               placeholder="Please describe your Batting sills" autocomplete="off" required>
+                               placeholder="Please describe your Batting skills" autocomplete="off" required>
                     </div>
 
                     <div class="batting">
@@ -183,7 +193,7 @@
                         </div>
                         <br>
                         <input type="text" class="required" name="bowlingComments" id="bowlingComments" maxlength="150"
-                               placeholder="Please describe your Bowling sills" autocomplete="off" required>
+                               placeholder="Please describe your Bowling skills" autocomplete="off" required>
                     </div>
 
                     <div class="batting">
@@ -194,7 +204,7 @@
                         </div>
                         <br>
                         <input type="text" class="required" name="fieldingComments" id="fieldingComments"
-                               maxlength="150" placeholder="Please describe your Fielding sills" autocomplete="off"
+                               maxlength="150" placeholder="Please describe your Fielding skills" autocomplete="off"
                                required>
                     </div>
 
@@ -206,8 +216,8 @@
                                 <label for="chequeno" class="required">Jersey Number (0 to 99)</label>
                                 <a class="form-link" style="color: red">Select your desired number on your jersey.</a>
                                 <input type="number" name="chequeno" id="chequeno" maxlength=2 min="0" max="99"
-                                       oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                       maxlength="2" required/>
+                                       onInput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                       required/>
 
                             </div>
 
@@ -248,22 +258,12 @@
                             <div class="label-flex">
                                 <label for="payment" class="required">I am sending <b style="color: red;"><u>$40</u></b>
                                     APL Seva to</label>
-                                <!--                                        <a href="#" class="form-link">Select & copy email</a>-->
                             </div>
                             <div class="form-radio-group">
-                                <!--
-                                                                        <div class="form-radio-item">
-                                                                            <input type="radio" name="payment" id="cash1" onclick="copyToClipboard('#p1')">
-                                                                            <label for="cash1">Bhavik Goyani</label>
-                                                                            <p id="p1">goyanibhavik369@gmail.com</p>
-                                                                            <span class="check"></span>
-                                                                        </div>
-                                -->
-
                                 <div class="form-radio-item">
                                     <input type="radio" name="payment" id="cash2"
                                            onclick="onClick('#p2', 'saralpatel21@gmail.com')">
-                                    <label for="cash2">Saral Patel</label>
+                                    <label for="cash2">saralpatel21@gmail.com</label>
                                     <p id="p2">saralpatel21@gmail.com</p>
                                     <span class="check"></span>
                                 </div>
@@ -271,18 +271,10 @@
                                 <div class="form-radio-item">
                                     <input type="radio" name="payment" id="cash3"
                                            onclick="onClick('#p3', 'saurabhjain3699@gmail.com')">
-                                    <label for="cash3">Saurabh Jain</label>
+                                    <label for="cash3">saurabhjain3699@gmail.com</label>
                                     <p id="p3">saurabhjain3699@gmail.com</p>
                                     <span class="check"></span>
                                 </div>
-                                <!--
-                                                                        <div class="form-radio-item">
-                                                                            <input type="radio" name="payment" id="cheque">
-                                                                            <label for="cheque">Sachin Patel</label>
-                                                                            <span class="check"></span>
-                                                                        </div>
-                                -->
-
                             </div>
                         </div>
 
@@ -302,7 +294,14 @@
                             }
                         </script>
                     </div>
-
+                    
+                    
+                    <div class="form-group">
+                        <div class="form-input">
+                        <label for="refName" class="required">Reference Name:</label>
+                        <input type="text" name="refName" placeholder="Who referred you for APL?" id="refName" maxlength="25" autocomplete="off" required/>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="required">Select your profile picture:</label>
@@ -310,11 +309,17 @@
                         <br>
 
                         <div class="form-submit">
-                            <input type="submit" value="Submit" class="submit" id="submit" name="submit"/>
-                            <input type="submit" value="Reset" class="submit" id="reset" name="reset"/>
+                            <input type="submit" value="Submit" class="submitReset" id="submit" name="submit"/>
+                            <input type="reset" value="Reset" class="submitReset" id="reset" name="reset"/>
                         </div>
 
                     </div>
+                    
+                    
+                    
+                    
+                    
+                    
                     <input type="text" id="base64Image" style="display: none;">
                     <input type="text" id="sevaCollectorEmail" style="display: none;">
                 </form>
@@ -353,14 +358,19 @@
                     let modal = document.getElementById('myModal');
                     let span = document.getElementsByClassName("close")[0];
                     span.onclick = function () {
-                        modal.style.display = "none";
+                        closeModal();
+
                     };
                     window.onclick = function (event) {
                         if (event.target === modal) {
-                            modal.style.display = "none";
+                            closeModal();
                         }
                     };
 
+                    const closeModal = () => {
+                        modal.style.display = "none";
+                        document.getElementById("reset").click();
+                    };
 
                     let modal1 = document.getElementById('myModal1');
                     let span1 = document.getElementsByClassName("close1")[0];
@@ -384,7 +394,6 @@
 
 
 <!-- JS -->
-
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/nouislider/nouislider.min.js"></script>
 <script src="vendor/wnumb/wNumb.js"></script>
@@ -426,6 +435,8 @@
     // parameter when you first load the API. For example:
     // <script
     // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    $("input, select, textarea").attr("autocomplete", "disable");
 
     var placeSearch, autocomplete;
 
