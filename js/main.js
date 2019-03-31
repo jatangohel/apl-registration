@@ -126,31 +126,70 @@
         equalTo: ""
     });
 
-    //const URL = "https://cloud4i862354trial.hanatrial.ondemand.com/cloud/webapi/player/playerDetails";
-    //const URL = "http://localhost:8080/cloud/webapi/player/playerDetails";
     const URL = "https://apl2019i862354trial.hanatrial.ondemand.com/cloudFinal/webapi/player/playerDetails";
     let isProcessing = false;
 
+    const assertCheckIfDefined = (inputValue, fieldName) => {
+        if (!inputValue) {
+            throw new Error(`please specify ${fieldName}`);
+        }
+    };
+
+    const getValueIfNotUndefinedInputFields = (inputFieldId, fieldName) => {
+        const fieldValue = document.getElementById(inputFieldId).value.trim();
+        fieldName = fieldName ? fieldName : inputFieldId;
+        assertCheckIfDefined(fieldValue, fieldName);
+        return fieldValue;
+    };
+    
+    const isValidEmail = email => {
+        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return email.match(regex);
+    };
+
     const validateAndGetValidatedFields = () => {
-        let jerseyNumber;
+        let firstName;
+        let lastName;
+        let email;
+        let streetAddress;
+        let city;
+        let state;
+        let zipCode;
+        let country;
         let phoneNumber;
         let battingRate;
         let bowlingRate;
+        let battingComment;
+        let bowlingComment;
+        let fieldingComment;
         let fieldingRate;
         let base64ImageString;
         let imageFormat;
+        let jerseyNumber;
         let jerseySize;
+        let sevaCollectorEmail;
+        let refName;
+        
 
-        try {
-            const jerseyNumberString = document.getElementById("chequeno").value.trim();
-            jerseyNumber = jerseyNumberString ? parseInt(jerseyNumberString) : 0;
-            if (jerseyNumber < 0 || jerseyNumber > 99) {
-                throw new Error();
-            }
-        } catch (error) {
-            log(error);
-            throw new Error("invalid jersey number");
+        firstName = getValueIfNotUndefinedInputFields("first_name", "first name");
+        lastName = getValueIfNotUndefinedInputFields("last_name", "last name");
+        email = getValueIfNotUndefinedInputFields("email");
+        if(!isValidEmail(email)) {
+            throw new Error("please provide valid email id");
         }
+        const streetNumber = getValueIfNotUndefinedInputFields("street_number", "street number");
+        const route = getValueIfNotUndefinedInputFields("route");
+        streetAddress = streetNumber + " " + route;
+        city = getValueIfNotUndefinedInputFields("locality");
+        state = getValueIfNotUndefinedInputFields("administrative_area_level_1", "state");
+        zipCode = getValueIfNotUndefinedInputFields("postal_code", "postal code");
+        country = getValueIfNotUndefinedInputFields("country");
+        battingComment = getValueIfNotUndefinedInputFields("battingComments", "batting comments");
+        bowlingComment = getValueIfNotUndefinedInputFields("bowlingComments", "bowling comments");
+        fieldingComment = getValueIfNotUndefinedInputFields("fieldingComments", "fielding comments");
+        sevaCollectorEmail = getValueIfNotUndefinedInputFields("sevaCollectorEmail", "seva collector");
+        refName = getValueIfNotUndefinedInputFields("refName", "reference name");
+
         try {
             phoneNumber = parseInt(document.getElementById("phone_number").value.trim().replace(/-/g, ''));   // this line will remove dash in string and convert it to integer
         } catch (error) {
@@ -182,18 +221,51 @@
         base64ImageString = base64PhotoWithExt[0];
         imageFormat = base64PhotoWithExt[1];
 
+        if (!(imageFormat === "jpg" || imageFormat === "jpeg" || imageFormat === "png" || imageFormat === "JPG" ||
+              imageFormat === "JPEG" || imageFormat === "PNG")) {
+            throw new Error("invalid image format (shoud either jpg/jpeg/png)");
+        }
+
+        try {
+            const jerseyNumberString = document.getElementById("chequeno").value.trim();
+            jerseyNumber = jerseyNumberString ? parseInt(jerseyNumberString) : 0;
+            if (jerseyNumber < 0 || jerseyNumber > 99) {
+                throw new Error();
+            }
+        } catch (error) {
+            log(error);
+            throw new Error("invalid jersey number");
+        }
+
         const jerseySizeElement = document.getElementById("jerseySize");
         jerseySize = jerseySizeElement.outerText.toLocaleLowerCase().trim();
+        if (jerseySize === "select final size") {
+            jerseySize = "";
+        }
+        assertCheckIfDefined(jerseySize, "jersey size");
 
         return {
-            jerseyNumber,
+            firstName,
+            lastName,
+            email,
             phoneNumber,
+            streetAddress,
+            city,
+            state,
+            zipCode,
+            country,
             battingRate,
             bowlingRate,
             fieldingRate,
+            battingComment,
+            bowlingComment,
+            fieldingComment,
             base64ImageString,
             imageFormat,
-            jerseySize
+            jerseyNumber,
+            jerseySize,
+            sevaCollectorEmail,
+            refName
         }
     };
 
@@ -202,27 +274,28 @@
         document.getElementById('base64Image').value = "";
 
         const requestBody = {
-            firstName: document.getElementById("first_name").value.trim(),
-            lastName: document.getElementById("last_name").value.trim(),
-            email: document.getElementById("email").value.trim(),
+            firstName: validatedFields.firstName,
+            lastName: validatedFields.lastName,
+            email: validatedFields.email,
             mobileNumber: validatedFields.phoneNumber,
-            streetAddress: document.getElementById("street_number").value.trim() + document.getElementById("route").value.trim(),
-            city: document.getElementById("locality").value.trim(),
-            state: document.getElementById("administrative_area_level_1").value.trim(),
-            zipCode: document.getElementById("postal_code").value.trim(),
-            country: document.getElementById("country").value.trim(),
+            streetAddress: validatedFields.streetAddress,
+            city: validatedFields.city,
+            state: validatedFields.state,
+            zipCode: validatedFields.zipCode,
+            country: validatedFields.country,
             jerseyNumber: validatedFields.jerseyNumber,
-            sevaCollector: document.getElementById("sevaCollectorEmail").value,
+            sevaCollector: validatedFields.sevaCollectorEmail,
             jerseySize: validatedFields.jerseySize,
             isPaid: false,
             battingRating: validatedFields.battingRate,
             bowlingRating: validatedFields.bowlingRate,
             fieldingRating: validatedFields.fieldingRate,
-            battingComment: document.getElementById("battingComments").value.trim(),
-            bowlingComment: document.getElementById("bowlingComments").value.trim(),
-            fieldingComment: document.getElementById("fieldingComments").value.trim(),
+            battingComment: validatedFields.battingComment,
+            bowlingComment: validatedFields.bowlingComment,
+            fieldingComment: validatedFields.fieldingComment,
             photo: validatedFields.base64ImageString,
-            imageFormat: validatedFields.imageFormat
+            imageFormat: validatedFields.imageFormat,
+            refName: validatedFields.refName
         };
 
         log(requestBody);
@@ -269,7 +342,6 @@
 
     const displaySuccessMessage = message => {
         document.getElementById("myModal").style.display = "block";
-        document.getElementById("successModalMessage").innerHTML = (message);
     };
 
     const displayErrorMessage = message => {
