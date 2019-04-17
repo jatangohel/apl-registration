@@ -80,6 +80,20 @@
 }
 
 
+/* img responsive */
+.img-responsive1 {
+    width: 70%;
+}
+
+@media (max-width: 476px) {
+    /* Probably some parent element that limits the img width */
+    .img-responsive1 {
+
+        width: 100%;
+    }
+}
+
+
 /* @extend display-flex; */
 display-flex, .signup-content, .form-row, .label-flex, .form-radio-group {
     display: flex;
