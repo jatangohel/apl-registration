@@ -126,7 +126,7 @@
         equalTo: ""
     });
 
-    const URL = "https://cloudapl2019i862354trial.hanatrial.ondemand.com/cloudFinal/webapi/player/playerDetails";
+    const URL = "https://apl2019i862354trial.hanatrial.ondemand.com/APL2019/webapi/logger/getit";
     let isProcessing = false;
 
     const assertCheckIfDefined = (inputValue, fieldName) => {
